@@ -34,9 +34,9 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update line_item" do
-    patch line_item_url(@line_item), params: { line_item: { cart_id: @line_item.cart_id, product_id: @line_item.product_id } }
-    assert_redirected_to line_item_url(@line_item)
-  end
+     patch :update, id: @line_item, line_item: { product_id: @line_item.product_id }
+      assert_redirected_to line_item_path(assigns(:line_item))
+end
 
   test "should destroy line_item" do
     assert_difference('LineItem.count', -1) do
